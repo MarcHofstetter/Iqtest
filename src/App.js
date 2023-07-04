@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Form} from 'react-bootstrap';
 
 function App() {
     const [logicalAnswer, setLogicalAnswer] = useState('');
@@ -82,7 +82,7 @@ function App() {
         let intrapersonalScore = 0;
         let interpersonalScore = 0;
 
-        if (logicalAnswer === 'b') {
+        if (logicalAnswer === 'd') {
             logicalScore = 100;
         }
 
@@ -128,34 +128,39 @@ function App() {
         <div>
             <h2>Ultra IQ test</h2>
             <Form>
-                <Form.Group controlId="logical">
-                    <Form.Label>Welche Zahl vervollständigt die Reihe: 2, 4, 6, 8, 10, ...?</Form.Label>
+                <Form.Group controlId="logical" id="formgroup">
+                    <Form.Label>Welche Zahl vervollständigt die Reihe: 0, 1, 1, 2, 3, 5, ...?</Form.Label>
                     <Form.Control as="select" value={logicalAnswer} onChange={handleLogicalAnswerChange}>
                         <option value="">Auswählen</option>
-                        <option value="a">11</option>
-                        <option value="b">12</option>
-                        <option value="c">13</option>
-                        <option value="d">14</option>
+                        <option value="a">5</option>
+                        <option value="b">6</option>
+                        <option value="c">7</option>
+                        <option value="d">8</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <Form.Group controlId="kinaesthetic">
-                    <Form.Label>Welche der folgenden Aktivitäten erfordert körperliche Bewegung?</Form.Label>
+                <Form.Group controlId="kinaesthetic" id="formgroup">
+                    <Form.Label>Was ist Kinaesthetic?</Form.Label>
                     <Form.Control
                         as="select"
                         value={kinaestheticAnswer}
                         onChange={handleKinaestheticAnswerChange}
                     >
                         <option value="">Auswählen</option>
-                        <option value="a">Lesen</option>
-                        <option value="b">Musik hören</option>
-                        <option value="c">Tanzen</option>
-                        <option value="d">Einen Film schauen</option>
+                        <option value="a">Die Fähigkeit, Emotionen anderer Menschen zu erkennen und zu verstehen
+                        </option>
+                        <option value="b">Die Fähigkeit, logische Zusammenhänge und Problemlösungen zu erkennen</option>
+                        <option value="c">Die Fähigkeit, Bewegungen und körperliche Aktivitäten geschickt auszuführen
+                        </option>
+                        <option value="d">Die Fähigkeit, komplexe mathematische Operationen durchzuführen</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <Form.Group controlId="naturalistic">
-                    <Form.Label>Was ist das Studium von Pflanzen und Tieren in ihrer natürlichen Umgebung?</Form.Label>
+                <Form.Group controlId="naturalistic" id="formgroup">
+                    <Form.Label>Was ist das Studium von Pflanzen und Tieren in ihrer natürlichen
+                        Umgebung?</Form.Label>
                     <Form.Control
                         as="select"
                         value={naturalisticAnswer}
@@ -164,13 +169,15 @@ function App() {
                         <option value="">Auswählen</option>
                         <option value="a">Biologie</option>
                         <option value="b">Geographie</option>
-                        <option value="c">Geschichte</option>
-                        <option value="d">Chemie</option>
+                        <option value="c">Zoologie</option>
+                        <option value="d">Botanik</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
                 <Form.Group controlId="visualMusic">
-                    <Form.Label>Welches Musikinstrument wird normalerweise mit Notenblättern gespielt?</Form.Label>
+                    <Form.Label>Welches Musikinstrument wird normalerweise mit Notenblättern
+                        gespielt?</Form.Label>
                     <Form.Control
                         as="select"
                         value={visualMusicAnswer}
@@ -183,9 +190,11 @@ function App() {
                         <option value="d">Gitarre</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <Form.Group controlId="musicalMusic">
-                    <Form.Label>Welche Art von Intelligenz ist besonders bei Musikern ausgeprägt?</Form.Label>
+                <Form.Group controlId="musicalMusic" id="formgroup">
+                    <Form.Label>Welche Art von Intelligenz ist besonders bei Musikern
+                        ausgeprägt?</Form.Label>
                     <Form.Control
                         as="select"
                         value={musicalMusicAnswer}
@@ -198,9 +207,11 @@ function App() {
                         <option value="d">Musikalische Intelligenz</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <Form.Group controlId="linguistic">
-                    <Form.Label>Welche Aktivität ist am besten geeignet, um die sprachliche Intelligenz zu fördern?</Form.Label>
+                <Form.Group controlId="linguistic" id="formgroup">
+                    <Form.Label>Welche Aktivität ist am besten geeignet, um die sprachliche
+                        Intelligenz zu fördern?</Form.Label>
                     <Form.Control
                         as="select"
                         value={linguisticAnswer}
@@ -213,9 +224,11 @@ function App() {
                         <option value="d">Musikinstrument spielen</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <Form.Group controlId="intrapersonal">
-                    <Form.Label>Welche Aktivität würde jemand mit ausgeprägter intrapersonaler Intelligenz wahrscheinlich am meisten genießen?</Form.Label>
+                <Form.Group controlId="intrapersonal" id="formgroup">
+                    <Form.Label>Welche Aktivität würde jemand mit ausgeprägter intrapersonaler
+                        Intelligenz wahrscheinlich am meisten genießen?</Form.Label>
                     <Form.Control
                         as="select"
                         value={intrapersonalAnswer}
@@ -228,9 +241,10 @@ function App() {
                         <option value="d">Ein Musikinstrument spielen</option>
                     </Form.Control>
                 </Form.Group>
-
-                <Form.Group controlId="interpersonal">
-                    <Form.Label>Welche Art von Intelligenz ist besonders bei Lehrern und Beratern ausgeprägt?</Form.Label>
+                <br/>
+                <Form.Group controlId="interpersonal" id="formgroup">
+                    <Form.Label>Welche Art von Intelligenz ist besonders bei Lehrern und
+                        Beratern ausgeprägt?</Form.Label>
                     <Form.Control
                         as="select"
                         value={interpersonalAnswer}
@@ -243,8 +257,9 @@ function App() {
                         <option value="d">Interpersonale Intelligenz</option>
                     </Form.Control>
                 </Form.Group>
+                <br/>
 
-                <button onClick={handleResultsClick} >
+                <button onClick={handleResultsClick}>
                     Ergebnisse anzeigen
                 </button>
             </Form>
