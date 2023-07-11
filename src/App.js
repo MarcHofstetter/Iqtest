@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Form} from 'react-bootstrap';
+import './App.css'
 
 function App() {
     const [logicalAnswer, setLogicalAnswer] = useState('');
@@ -10,6 +11,7 @@ function App() {
     const [linguisticAnswer, setLinguisticAnswer] = useState('');
     const [intrapersonalAnswer, setIntrapersonalAnswer] = useState('');
     const [interpersonalAnswer, setInterpersonalAnswer] = useState('');
+    const [funAnswer, setFunAnswer] = useState('')
     const [showResults, setShowResults] = useState(false);
 
     const [logicalScore, setLogicalScore] = useState(0);
@@ -20,6 +22,7 @@ function App() {
     const [linguisticScore, setLinguisticScore] = useState(0);
     const [intrapersonalScore, setIntrapersonalScore] = useState(0);
     const [interpersonalScore, setInterpersonalScore] = useState(0);
+    const [funScore, setFunScore] = useState(0);
 
     const handleLogicalAnswerChange = (e) => {
         setLogicalAnswer(e.target.value);
@@ -52,6 +55,9 @@ function App() {
     const handleInterpersonalAnswerChange = (e) => {
         setInterpersonalAnswer(e.target.value);
     };
+    const handleFunAnswerChange = (e) => {
+        setFunAnswer(e.target.value);
+    };
 
     const handleResultsClick = (e) => {
         e.preventDefault();
@@ -63,7 +69,8 @@ function App() {
             musicalMusicAnswer &&
             linguisticAnswer &&
             intrapersonalAnswer &&
-            interpersonalAnswer
+            interpersonalAnswer &&
+            funAnswer
         ) {
             calculateScores();
             setShowResults(true);
@@ -81,6 +88,7 @@ function App() {
         let linguisticScore = 0;
         let intrapersonalScore = 0;
         let interpersonalScore = 0;
+        let funScore = 0;
 
         if (logicalAnswer === 'd') {
             logicalScore = 100;
@@ -113,6 +121,9 @@ function App() {
         if (interpersonalAnswer === 'd') {
             interpersonalScore = 100;
         }
+        if (funAnswer === 'c') {
+            funScore = 100;
+        }
 
         setLogicalScore(logicalScore);
         setKinaestheticScore(kinaestheticScore);
@@ -122,15 +133,16 @@ function App() {
         setLinguisticScore(linguisticScore);
         setIntrapersonalScore(intrapersonalScore);
         setInterpersonalScore(interpersonalScore);
+        setFunScore(funScore)
     };
 
     return (
         <div>
-            <h2>Ultra IQ test</h2>
+            <h2 id="title">Ultra IQ test</h2>
             <Form>
                 <Form.Group controlId="logical" id="formgroup">
-                    <Form.Label>Welche Zahl vervollständigt die Reihe: 0, 1, 1, 2, 3, 5, ...?</Form.Label>
-                    <Form.Control as="select" value={logicalAnswer} onChange={handleLogicalAnswerChange}>
+                    <Form.Label id="frage">Welche Zahl vervollständigt die Reihe: 0, 1, 1, 2, 3, 5, ...?</Form.Label>
+                    <Form.Control as="select" value={logicalAnswer} onChange={handleLogicalAnswerChange} id="control">
                         <option value="">Auswählen</option>
                         <option value="a">5</option>
                         <option value="b">6</option>
@@ -138,11 +150,12 @@ function App() {
                         <option value="d">8</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
+
+
 
                 <Form.Group controlId="kinaesthetic" id="formgroup">
-                    <Form.Label>Was ist Kinaesthetic?</Form.Label>
-                    <Form.Control
+                    <Form.Label id="frage">Was ist Kinaesthetic?</Form.Label>
+                    <Form.Control id="control"
                         as="select"
                         value={kinaestheticAnswer}
                         onChange={handleKinaestheticAnswerChange}
@@ -156,12 +169,13 @@ function App() {
                         <option value="d">Die Fähigkeit, komplexe mathematische Operationen durchzuführen</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
+
+
 
                 <Form.Group controlId="naturalistic" id="formgroup">
-                    <Form.Label>Was ist das Studium von Pflanzen und Tieren in ihrer natürlichen
+                    <Form.Label id="frage">Was ist das Studium von Pflanzen und Tieren in ihrer natürlichen
                         Umgebung?</Form.Label>
-                    <Form.Control
+                    <Form.Control id="control"
                         as="select"
                         value={naturalisticAnswer}
                         onChange={handleNaturalisticAnswerChange}
@@ -173,29 +187,28 @@ function App() {
                         <option value="d">Botanik</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
 
-                <Form.Group controlId="visualMusic">
-                    <Form.Label>Welches Musikinstrument wird normalerweise mit Notenblättern
-                        gespielt?</Form.Label>
-                    <Form.Control
+
+
+                <Form.Group controlId="visualMusic" id="formgroup">
+                    <Form.Label id="frage">Welches ist ein Holzblasinstrument?</Form.Label>
+                    <Form.Control id="control"
                         as="select"
                         value={visualMusicAnswer}
                         onChange={handleVisualMusicAnswerChange}
                     >
                         <option value="">Auswählen</option>
-                        <option value="a">Klavier</option>
-                        <option value="b">Schlagzeug</option>
+                        <option value="a">Saxophon</option>
+                        <option value="b">Posaune</option>
                         <option value="c">Geige</option>
-                        <option value="d">Gitarre</option>
+                        <option value="d">Trompete</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
 
                 <Form.Group controlId="musicalMusic" id="formgroup">
-                    <Form.Label>Welche Art von Intelligenz ist besonders bei Musikern
+                    <Form.Label id="frage">Welche Art von Intelligenz ist besonders bei Musikern
                         ausgeprägt?</Form.Label>
-                    <Form.Control
+                    <Form.Control id="control"
                         as="select"
                         value={musicalMusicAnswer}
                         onChange={handleMusicalMusicAnswerChange}
@@ -207,12 +220,13 @@ function App() {
                         <option value="d">Musikalische Intelligenz</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
+
+
 
                 <Form.Group controlId="linguistic" id="formgroup">
-                    <Form.Label>Welche Aktivität ist am besten geeignet, um die sprachliche
+                    <Form.Label id="frage">Welche Aktivität ist am besten geeignet, um die sprachliche
                         Intelligenz zu fördern?</Form.Label>
-                    <Form.Control
+                    <Form.Control id="control"
                         as="select"
                         value={linguisticAnswer}
                         onChange={handleLinguisticAnswerChange}
@@ -224,12 +238,14 @@ function App() {
                         <option value="d">Musikinstrument spielen</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
+
+
+
 
                 <Form.Group controlId="intrapersonal" id="formgroup">
-                    <Form.Label>Welche Aktivität würde jemand mit ausgeprägter intrapersonaler
+                    <Form.Label id="frage">Welche Aktivität würde jemand mit ausgeprägter intrapersonaler
                         Intelligenz wahrscheinlich am meisten genießen?</Form.Label>
-                    <Form.Control
+                    <Form.Control id="control"
                         as="select"
                         value={intrapersonalAnswer}
                         onChange={handleIntrapersonalAnswerChange}
@@ -241,14 +257,15 @@ function App() {
                         <option value="d">Ein Musikinstrument spielen</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
+
                 <Form.Group controlId="interpersonal" id="formgroup">
-                    <Form.Label>Welche Art von Intelligenz ist besonders bei Lehrern und
+                    <Form.Label id="frage">Welche Art von Intelligenz ist besonders bei Lehrern und
                         Beratern ausgeprägt?</Form.Label>
-                    <Form.Control
+                    <Form.Control id="control"
                         as="select"
                         value={interpersonalAnswer}
                         onChange={handleInterpersonalAnswerChange}
+
                     >
                         <option value="">Auswählen</option>
                         <option value="a">Räumliche Intelligenz</option>
@@ -257,9 +274,32 @@ function App() {
                         <option value="d">Interpersonale Intelligenz</option>
                     </Form.Control>
                 </Form.Group>
-                <br/>
 
-                <button onClick={handleResultsClick}>
+
+
+
+                <Form.Group id="formgroup" controlId="fun">
+                    <Form.Label id="frage">Was ist der Beste weg um Python zu lernen</Form.Label>
+                    <Form.Control id="control"
+                                  as="select"
+
+                                  onChange={handleInterpersonalAnswerChange}
+
+                    >
+                        <option value="">Auswählen</option>
+                        <option value="a">Turtorials von Inter anschauen</option>
+                        <option value="b">Im internet seiten suchen</option>
+                        <option value="c">Gegen einen Python kämpfen</option>
+                        <option value="d">Einen Online kurs besuchen</option>
+                    </Form.Control>
+                </Form.Group>
+
+
+
+
+
+
+                <button onClick={handleResultsClick} id="result">
                     Ergebnisse anzeigen
                 </button>
             </Form>
@@ -275,6 +315,8 @@ function App() {
                     <p>Sprachliche Intelligenz: {linguisticScore}</p>
                     <p>Intrapersonale Intelligenz: {intrapersonalScore}</p>
                     <p>Interpersonale Intelligenz: {interpersonalScore}</p>
+                    <p>Fun: {funScore}</p>
+
                 </div>
             )}
         </div>

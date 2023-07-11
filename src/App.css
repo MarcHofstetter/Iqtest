@@ -1,4 +1,25 @@
 
 #formgroup{
-  margin-bottom: 100px;
+  margin-bottom: 75px;
 }
+div{
+  background-color: black;
+  color: white;
+}
+#frage{
+  font-size: 30px;
+}
+#result{
+  margin-left: 38%;
+  width: 400px;
+  height: 50px;
+
+}
+#control{
+}
+#title{
+font-size: 48px;
+  margin-bottom: 50px;
+  margin-left: 40%;
+}
+
